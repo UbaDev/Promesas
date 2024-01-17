@@ -1,9 +1,8 @@
 
-
+//uso de promesas
 let promesaExitosa = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve("La operación fue exitosa");
-    }, 3000);
+   //simula un error durante la ejecución
+    reject('La promesa fue rechazada');
 });
 
 
