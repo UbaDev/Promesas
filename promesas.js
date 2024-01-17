@@ -2,7 +2,12 @@
 //uso de promesas
 let promesaExitosa = new Promise((resolve, reject) => {
    //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
+    try {
+        //resolve('Promesa exitosa');
+        reject('Error en la promesa');
+    } catch (error) {
+        reject(error);
+    }
 });
 
 
