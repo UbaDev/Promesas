@@ -1,5 +1,5 @@
 
-
+//uso de promesas
 let promesaExitosa = new Promise((resolve, reject) => {
     setTimeout(() => {
         resolve("La operación fue exitosa");
