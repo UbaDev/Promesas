@@ -1,13 +1,22 @@
+const sumarLento = (numero) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(numero + 1);
+             //reject('Sumar lento falló');
+        }, 800);
+    });
+}
 
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
+const sumarRapido = (numero) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(numero + 1);
+        }, 300);
+    });
+}
 
-
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+Promise.all(([sumarRapido(6), sumarLento(5), true, 'hola mundo']))
+    .then(respuestas => {
+        console.log(respuestas);
+    })
+    .catch(console.log);
