@@ -1,13 +1,15 @@
+let user = {
+    name: "Ubaldo",
+    age: 25
+}
 
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
-
-
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+fetch('https://regres.in/api/users', {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+        "Content-type": "application/json"
+    }
+})
+.then(res => res.json())
+.then(data => console.log)
+.catch(err => console.log("Error: ", err))
