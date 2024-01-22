@@ -1,10 +1,8 @@
 
-
-fetch("http://fakestoreapi.com/products/1")
-  .then((res) => res.json())
-  .then((data) => {
-    console.log(data);
-    console.log(data.price);
-  })
-  .catch((error) => console.log(error));
-
+fetch("https://wikipedia.org")   
+    .then(resp => resp.text())
+    .then(html => {
+        document.open();
+        document.write(html);
+        document.close();
+    })
