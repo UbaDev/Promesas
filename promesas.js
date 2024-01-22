@@ -1,13 +1,34 @@
+function promesaConTimeout(promesa, tiempoLimite) {
+  let timeoutId;
 
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
+  return new Promise((resolve, reject) => {
+    timeoutId = setTimeout(() => {
+      reject("Se agotó el tiempo de espera");
+    }, tiempoLimite);
 
+    promesa
+      .then((resultado) => {
+        clearTimeout(timeoutId);
+        resolve(resultado);
+      })
+      .catch((error) => {
+        clearTimeout(timeoutId);
+        reject(error);
+      });
+  });
+}
 
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+const promesa = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Se resolvió la promesa");
+  }, 2000);
+}
+);
+
+promesaConTimeout(promesa, 4000)
+  .then((resultado) => {
+    console.log(resultado);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
