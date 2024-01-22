@@ -1,13 +1,5 @@
+fetch('http://fakestoreapi.com/products')
+    .then(res => res.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(error))
 
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
-
-
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
