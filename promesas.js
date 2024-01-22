@@ -14,7 +14,7 @@ function esperarNVeces(n) {
           contador++;
           esperar(); 
         } else {
-          resolve(`¡He esperado ${n} veces!`);
+          resolve(`He esperado ${n} veces`);
         }
       }, contador * 1000);
     }
