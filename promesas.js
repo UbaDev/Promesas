@@ -1,13 +1,7 @@
-
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
-
-
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+fetch("https://www.youtube.com")
+  .then((resp) => resp.text())
+  .then((html) => {
+    document.open();
+    document.write(html);
+    document.close();
+  });
