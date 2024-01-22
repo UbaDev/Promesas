@@ -1,13 +1,29 @@
+function esperarNVeces(n) {
+  return new Promise((resolve, reject) => {
+    let contador = 1;
+    let totalEspera = 0;
 
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
+    function esperar() {
+      setTimeout(() => {
+        totalEspera += contador;
+        console.log(
+          `He esperado ${contador} segundos, llevo ${totalEspera} segundos en total`
+        );
+
+        if (contador < n) {
+          contador++;
+          esperar(); 
+        } else {
+          resolve(`¡He esperado ${n} veces!`);
+        }
+      }, contador * 1000);
+    }
+
+    esperar();
+  });
+}
 
 
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+esperarNVeces(5)
+  .then((msg) => console.log(msg))
+  .catch((err) => console.log("Error", err));
