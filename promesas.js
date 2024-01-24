@@ -1,15 +1,9 @@
-fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
-  .then((res) => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error("Error en la petición");
-    }
-  })
-  .then((data) => {
-    console.log(data);
-  })
-  .catch((err) => {
-    console.log(err);
-    console.log("Error en la petición");
-  });
+fetch("not-found.html")
+    .then(response => response.text())
+    .then(html => {
+        document.querySelector("body").innerHTML = html;
+    })
+    .catch(error => {
+        console.error(error);
+        console.log("Error en la petición")
+    });
