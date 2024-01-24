@@ -1,13 +1,16 @@
-
-//uso de promesas
-let promesaExitosa = new Promise((resolve, reject) => {
-   //simula un error durante la ejecución
-    reject('La promesa fue rechazada');
-});
-
-
-promesaExitosa.then((mensaje) => {
-    console.log(mensaje);
-}).catch((error) => {
-    console.error(error);
-});
+fetch("https://fakestoreapi.com/products/1")
+  .then((res) => {
+    if(res.ok){
+        return res.json();
+    }
+    else {
+        throw new Error( "Error en la petición");
+    }
+  })
+    .then((data) => {
+    console.log(data);
+    })
+  .catch((err) => {
+    console.log(err);
+    console.log("Error en la petición");
+  });
